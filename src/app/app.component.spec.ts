@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzButtonModule } from 'ng-zorro-antd/button'; // Import specific modules
 import { EmployeeTreeComponent } from './components/employee-tree/employee-tree.component';
 import { NgxsModule } from '@ngxs/store';
 import { EmployeeState } from './store/employee/Employe.State';
@@ -12,7 +12,10 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent, EmployeeTreeComponent],
-      imports: [NgZorroAntdModule, NgxsModule.forRoot([EmployeeState])],
+      imports: [
+        NzButtonModule, // Example: import specific Ng-Zorro module
+        NgxsModule.forRoot([EmployeeState]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);

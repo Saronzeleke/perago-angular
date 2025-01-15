@@ -1,0 +1,17 @@
+<div class="employee-form">
+    <h2>Add Employee</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" required>
+
+      <label for="position">Position:</label>
+      <input id="position" formControlName="position" required>
+  
+      <label for="department">Department:</label>
+      <input id="department" formControlName="department">
+  
+      <button type="submit">Submit</button>
+      <button type="button" (click)="router.navigate(['/employees'])">Cancel</button>
+    </form>
+  </div>
+    

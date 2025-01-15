@@ -1,0 +1,12 @@
+<div class="model-list">
+    <h2>Model List</h2>
+    <button routerLink="/add-model">Add Model</button>
+    <ul>
+      <li *ngFor="let model of models">
+        {{ model.name }} - {{ model.type }}
+        <button (click)="deleteModel(model.id)">Delete</button>
+        <button [routerLink]="['/edit-model', model.id]">Edit</button>
+      </li>
+    </ul>
+  </div>
+  

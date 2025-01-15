@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-// import { Employee } from '../model/employee/employee.model';
 import { Employee } from '../model/employee/employee.model';
+
    
 
 import { GetEmployees, DeleteEmployee } from './employee.actions';
