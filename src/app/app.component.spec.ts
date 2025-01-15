@@ -1,35 +1,35 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { EmployeeTreeComponent } from './components/employee-tree/employee-tree.component';
+import { NgxsModule } from '@ngxs/store';
+import { EmployeeState } from './store/employee/Employe.State';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent, EmployeeTreeComponent],
+      imports: [NgZorroAntdModule, NgxsModule.forRoot([EmployeeState])],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'perago-angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('perago-angular');
+  it(`should have as title 'Perago Employee Hierarchy'`, () => {
+    expect(component.title).toEqual('Perago Employee Hierarchy');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+  it('should render title in a h1 tag', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('perago-angular app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Perago Employee Hierarchy');
   });
 });

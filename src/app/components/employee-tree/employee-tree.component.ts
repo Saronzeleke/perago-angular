@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Employee } from '../../models/employee.model';
+import { Employee } from '../../models/Employee.model';
 import { Store, Select } from '@ngxs/store';
-import { EmployeeState } from '../../store/employee.state';
+import { EmployeeState } from '../../store/employee/Employe.State';
 import { Observable } from 'rxjs';
-import { GetEmployees, DeleteEmployee } from '../../store/employee.actions';
+import { GetEmployees, DeleteEmployee } from '../../store/employee/employee.actions';
 
 @Component({
   selector: 'app-employee-tree',
