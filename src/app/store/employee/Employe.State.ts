@@ -1,43 +1,28 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { Employee } from '../model/employee/employee.model';
+import { State, Action, StateContext } from '@ngxs/store';
 
-   
+export interface EmployeeStateModel {
+  positions: any[];
+}
 
-import { GetEmployees, DeleteEmployee } from './employee.actions';
-
-interface EmployeeStateModel {
-  employees: Employee[];
+export class AddPosition {
+  static readonly type = '[Employee] Add Position';
+  constructor(public position: any) {}
 }
 
 @State<EmployeeStateModel>({
-  name: 'employees',
+  name: 'employee',
   defaults: {
-    employees: []
+    positions: [],
   }
 })
 export class EmployeeState {
-  @Selector()
-  static getEmployeeTree(state: EmployeeStateModel): Employee[] {
-    const map = new Map<number, Employee & { children: Employee[] }>();
-    state.employees.forEach(emp => map.set(emp.id, { ...emp, children: [] }));
-    state.employees.forEach(emp => {
-      if (emp.parentId !== null) {
-        map.get(emp.parentId)?.children.push(map.get(emp.id)!);
-      }
-    });
-    return Array.from(map.values()).filter(emp => emp.parentId === null);
-  }
 
-  @Action(GetEmployees)
-  getEmployees(ctx: StateContext<EmployeeStateModel>) {
-    const employees = [ /* Fetch or mock employee data */ ];
-    ctx.patchState({ employees });
-  }
-
-  @Action(DeleteEmployee)
-  deleteEmployee(ctx: StateContext<EmployeeStateModel>, action: DeleteEmployee) {
+  @Action(AddPosition)
+  addPosition(ctx: StateContext<EmployeeStateModel>, action: AddPosition) {
     const state = ctx.getState();
-    const filtered = state.employees.filter(emp => emp.id !== action.id);
-    ctx.patchState({ employees: filtered });
+    ctx.setState({
+      ...state,
+      positions: [...state.positions, action.position]
+    });
   }
 }

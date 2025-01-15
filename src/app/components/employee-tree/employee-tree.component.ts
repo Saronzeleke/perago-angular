@@ -1,25 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Employee } from '../../models/Employee.model';
-import { Store, Select } from '@ngxs/store';
-import { EmployeeState } from '../../store/employee/Employe.State';
-import { Observable } from 'rxjs';
-import { GetEmployees, DeleteEmployee } from '../../store/employee/employee.actions';
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../employee-services/employe.service';
+import { NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 
 @Component({
   selector: 'app-employee-tree',
   templateUrl: './employee-tree.component.html',
-  styleUrls: ['./employee-tree.component.css']
+  styleUrls: ['./employee-tree.component.scss']
 })
 export class EmployeeTreeComponent implements OnInit {
-  @Select(EmployeeState.getEmployeeTree) employeeTree$!: Observable<Employee[]>;
+  positions: NzTreeNodeOptions[] = [];
 
-  constructor(private store: Store) {}
+  constructor(private employeeService: EmployeeService) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(new GetEmployees());
+  ngOnInit() {
+    this.employeeService.getPositions().subscribe((data) => {
+      this.positions = this.transformDataToTree(data);
+    });
   }
 
-  deleteEmployee(id: number): void {
-    this.store.dispatch(new DeleteEmployee(id));
+  transformDataToTree(data: any[]): NzTreeNodeOptions[] {
+    return data.map(position => ({
+      title: position.name,
+      key: position.id.toString(),
+      children: position.children ? this.transformDataToTree(position.children) : []
+    }));
   }
 }
