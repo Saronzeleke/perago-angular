@@ -1,0 +1,10 @@
+<ul>
+    <ng-container *ngFor="let employee of employeeTree$ | async">
+      <li>
+        {{ employee.name }}
+        <button nz-button nzType="text" (click)="deleteEmployee(employee.id)">Delete</button>
+        <app-employee-tree *ngIf="employee.children" [tree]="employee.children"></app-employee-tree>
+      </li>
+    </ng-container>
+  </ul>
+  
