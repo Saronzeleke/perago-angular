@@ -11,12 +11,14 @@ import { EmployeeTreeComponent } from './components/employee-tree/employee-tree.
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { NgxsModule } from '@ngxs/store';
 import { EmployeeState } from './store/employee.state';
+import { EmployeeComponent } from './store/employee/employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeTreeComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
