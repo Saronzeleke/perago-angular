@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee-services/employe.service';
+import { EmployeeService } from '../../employee-service/employee.service';
+
 import { NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 
 @Component({
@@ -13,7 +14,9 @@ export class EmployeeTreeComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {
-    this.employeeService.getPositions().subscribe((data) => {
+    this.employeeService.getPositions().subscribe((data: any[]) => {
+
+    
       this.positions = this.transformDataToTree(data);
     });
   }

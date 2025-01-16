@@ -1,13 +1,26 @@
-<html><form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
-    <nz-input-group formControlName="name">
-      <input nz-input placeholder="Position Name" />
-    </nz-input-group>
-    <nz-input-group formControlName="description">
-      <input nz-input placeholder="Position Description" />
-    </nz-input-group>
-    <nz-select formControlName="parentId" nzShowSearch>
-      <nz-option *ngFor="let position of positions" [nzValue]="position.id" [nzLabel]="position.name"></nz-option>
-    </nz-select>
-    <button nz-button [nzType]="'primary'" type="submit">Submit</button>
-  </form></html>
-
+<form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
+    <div nz-form-item nzGutter>
+      <nz-input-group>
+        <input nz-input formControlName="name" placeholder="Position Name" />
+      </nz-input-group>
+    </div>
+    
+    <div nz-form-item nzGutter>
+      <nz-input-group>
+        <input nz-input formControlName="description" placeholder="Position Description" />
+      </nz-input-group>
+    </div>
+    
+    <div nz-form-item nzGutter>
+        <nz-select formControlName="parentId" nzShowSearch nzPlaceHolder="Select Parent">
+            <nz-option *ngFor="let position of positions" [nzValue]="position.id" [nzLabel]="position.name"></nz-option>
+          </nz-select>
+          
+    </div>
+    
+    <div nz-form-item>
+      <button nz-button [nzType]="'primary'" type="submit">Submit</button>
+    </div>
+  </form>
+  
+  
