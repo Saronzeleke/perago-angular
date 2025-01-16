@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../employee-service/employee.service';
+import { EmployeeService } from '../employee-service/employee.services';
+
 
 import { NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 
