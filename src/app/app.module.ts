@@ -9,19 +9,21 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
+
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
 
 import { EmployeeState } from '../app/store/employee/Employe.State'; // Adjust path to EmployeeState if needed
 import { EmployeeTreeComponent } from './components/employee-tree/employee-tree.component';
+
 import { EmployeeFormComponent } from '../app/employefrom/employeeform.component';
 import { EmployeeServicesComponent } from './employee-service/employee-services.component'; // Ensure consistency with naming
 import { EmployeeService } from './employee-service/employee.services';
 @NgModule({
   declarations: [
     AppComponent,
-    // EmployeeTreeComponent,
+    EmployeeTreeComponent,
     EmployeeFormComponent,
     EmployeeServicesComponent,
     
