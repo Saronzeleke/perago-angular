@@ -1,0 +1,25 @@
+/* Custom SCSS for the App Component */
+.container {
+    @apply mx-auto px-4 py-6; /* Apply Tailwind's margin, padding, etc. */
+  }
+  
+  button {
+    @apply px-4 py-2 rounded-md text-white font-semibold; /* Tailwind styles for buttons */
+  }
+  
+  button.nz-button {
+    @apply shadow-md transition-transform ease-in-out duration-300; /* Add smooth animation on button hover */
+  }
+  
+  button.primary {
+    @apply bg-blue-500 hover:bg-blue-600; /* Primary button style */
+  }
+  
+  button.default {
+    @apply bg-gray-300 hover:bg-gray-400; /* Default button style */
+  }
+  
+  a.nz-button {
+    @apply text-blue-500 hover:text-blue-700; /* Link button style */
+  }
+  

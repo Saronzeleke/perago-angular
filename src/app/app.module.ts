@@ -1,28 +1,53 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgZorroAntdModule } from './ng-zorro-antd/ng-zorro-antd.module';
-registerLocaleData(en);
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzTreeModule } from 'ng-zorro-antd/tree';
 
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
+
+import { EmployeeState } from '../app/store/employee/Employe.State'; // Adjust path to EmployeeState if needed
+import { EmployeeTreeComponent } from './components/employee-tree/employee-tree.component';
+
+import { EmployeeFormComponent } from '../app/employefrom/employeeform.component';
+import { EmployeeServicesComponent } from './employee-service/employee-services.component'; // Ensure consistency with naming
+import { EmployeeService } from './employee-service/employee.services';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    EmployeeTreeComponent,
+    EmployeeFormComponent,
+    EmployeeServicesComponent,
+    
+  ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule,
+    NgxsModule.forRoot([EmployeeState]),
+    NzButtonModule,
+    NzInputModule,
+    NzFormModule,
+    NzSelectModule,
+    NzTreeModule,
+    NzIconModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    EmployeeService, // Add the service here if it's not provided in the service itself.
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
+
