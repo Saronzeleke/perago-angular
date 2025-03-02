@@ -1,1 +1,6 @@
-<p>position-list works!</p>
+<!-- src/app/components/position-list/position-list.component.html -->
+<nz-tree
+  [nzData]="treeData"
+  [nzExpandAll]="true"
+  (nzClick)="onNodeClick($event)"
+></nz-tree>
