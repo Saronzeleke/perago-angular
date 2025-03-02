@@ -1,26 +1,30 @@
+<!-- src/app/components/position-form/position-form.component.html -->
 <form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
-    <div nz-form-item nzGutter>
-      <nz-input-group>
-        <input nz-input formControlName="name" placeholder="Position Name" />
-      </nz-input-group>
-    </div>
-    
-    <div nz-form-item nzGutter>
-      <nz-input-group>
-        <input nz-input formControlName="description" placeholder="Position Description" />
-      </nz-input-group>
-    </div>
-    
-    <div nz-form-item nzGutter>
-        <nz-select formControlName="parentId" nzShowSearch nzPlaceHolder="Select Parent">
-            <nz-option *ngFor="let position of positions" [nzValue]="position.id" [nzLabel]="position.name"></nz-option>
-          </nz-select>
-          
-    </div>
-    
-    <div nz-form-item>
-      <button nz-button [nzType]="'primary'" type="submit">Submit</button>
-    </div>
-  </form>
-  
-  
+  <nz-form-item>
+    <nz-form-label>Name</nz-form-label>
+    <nz-form-control>
+      <input nz-input formControlName="name" />
+      <nz-form-explain *ngIf="positionForm.get('name').errors?.required">
+        Name is required.
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Description</nz-form-label>
+    <nz-form-control>
+      <textarea nz-input formControlName="description"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Parent Position</nz-form-label>
+    <nz-form-control>
+      <nz-select formControlName="parentId">
+        <nz-option *ngFor="let position of positions" [nzValue]="position.id" [nzLabel]="position.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <button nz-button nzType="primary" type="submit">Save</button>
+</form>
