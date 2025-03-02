@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PositionService } from '../../services/position.service';
 import { TreeNode } from '../../utils/tree.utils';
-import { EmployeePosition } from '../../models/employee-position.model';
+
 
 @Component({
   selector: 'app-position-list',

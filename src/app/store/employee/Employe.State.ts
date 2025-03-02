@@ -1,7 +1,8 @@
 // src/app/state/position.state.ts
 import { State, Action, StateContext } from '@ngxs/store';
-import { EmployeePosition } from '../models/employee-position.model';
-import { PositionService } from '../services/position.service';
+import { EmployeePosition } from '../models/employee-postion/employee-position.component';
+import { PositionService } from '../../services/PositionService';
+
 import { Injectable } from '@angular/core';
 
 export class LoadPositions {
